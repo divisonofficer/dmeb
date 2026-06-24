@@ -1,0 +1,20 @@
+# DepthAnything + RANSAC (geometric scale fitting)
+# Compares learnable MLP vs non-learnable RANSAC
+
+depth_mode: ransac
+
+# RANSAC specific
+ransac_iters: 100
+
+# Unused for this mode
+promptda_encoder: vitb
+promptda_ckpt: null
+depthprompt_backbone: da_b
+depthprompt_prop_time: 3
+bpnet_ckpt: null
+
+# Training parameters
+batch_size: 6
+lr: 0.0001
+epochs: 20
+num_workers: 4

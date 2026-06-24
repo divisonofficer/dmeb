@@ -1,0 +1,16 @@
+# DMEB reference pipeline — Python dependencies
+# Tested with Python 3.10, CUDA 12.x, PyTorch 2.x.
+torch>=2.0
+torchvision>=0.15
+numpy>=1.24
+scipy>=1.10
+opencv-python>=4.8
+imageio>=2.31
+tifffile>=2023.7
+PyYAML>=6.0
+tqdm>=4.65
+einops>=0.7
+scikit-image>=0.21      # SSIM
+lpips>=0.1.4            # perceptual metric
+# Optional, for EXR I/O if OpenCV is built without EXR support:
+# OpenEXR ; Imath

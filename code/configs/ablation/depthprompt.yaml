@@ -1,0 +1,20 @@
+# DepthPrompting with CSPN refinement
+# Monocular backbone + sparse encoder + iterative propagation
+
+depth_mode: depthprompt
+
+# DepthPrompting specific
+depthprompt_backbone: da_b  # Options: da_s, da_b, da_l, df
+depthprompt_prop_time: 3    # Number of CSPN iterations (default: 18, reduced for speed)
+
+# Unused for this mode
+promptda_encoder: vitb
+promptda_ckpt: null
+bpnet_ckpt: null
+ransac_iters: 100
+
+# Training parameters
+batch_size: 4  # Reduced batch size due to higher memory usage
+lr: 0.0001
+epochs: 20
+num_workers: 4

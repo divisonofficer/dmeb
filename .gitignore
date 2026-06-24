@@ -1,0 +1,27 @@
+# checkpoints / large binaries (distributed via the project page, not git)
+code/checkpoints/*.pth
+code/checkpoints/*.ckpt
+code/third_party/modules/
+docs/static/videos/
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# outputs
+out/
+*.csv
+!code/configs/*.csv
+
+# local qualitative / experiment helper scripts
+scripts/
+
+# local assistant/config artifacts and non-release duplicates
+.claude/
+asset/
+splits/
+
+# os
+.DS_Store

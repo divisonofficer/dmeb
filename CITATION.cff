@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this dataset, benchmark, or code, please cite the following."
+title: "DMEB: A Multi-View Varying-Exposure HDR Robot-Vision Benchmark"
+authors:
+  - family-names: Kim
+    given-names: Jinnyeong
+  - family-names: Choi
+    given-names: Juhyung
+  - family-names: Kim
+    given-names: Woohyeok
+  - family-names: Cho
+    given-names: Sunghyun
+  - family-names: Baek
+    given-names: Seung-Hwan
+preferred-citation:
+  type: conference-paper
+  title: "DMEB: A Multi-View Varying-Exposure HDR Robot-Vision Benchmark"
+  authors:
+    - family-names: Kim
+      given-names: Jinnyeong
+    - family-names: Choi
+      given-names: Juhyung
+    - family-names: Kim
+      given-names: Woohyeok
+    - family-names: Cho
+      given-names: Sunghyun
+    - family-names: Baek
+      given-names: Seung-Hwan
+  collection-title: "European Conference on Computer Vision (ECCV)"
+  year: 2026
+url: "https://divisonofficer.github.io/eccv2026/"
+license: "CC-BY-NC-4.0"

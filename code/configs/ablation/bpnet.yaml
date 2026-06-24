@@ -1,0 +1,23 @@
+# BPNet bilateral propagation
+# Requires camera intrinsics and custom CUDA ops
+
+depth_mode: bpnet
+
+# BPNet specific
+bpnet_ckpt: modules/depth_densify/BPNet/checkpoints/kitty.pth  # KITTI pretrained checkpoint
+
+# Unused for this mode
+promptda_encoder: vitb
+promptda_ckpt: null
+depthprompt_backbone: da_b
+depthprompt_prop_time: 3
+ransac_iters: 100
+
+# Training parameters
+batch_size: 4  # Reduced batch size due to custom CUDA ops
+lr: 0.0001
+epochs: 20
+num_workers: 4
+
+# Note: BPNet requires compilation of CUDA extensions:
+#   cd modules/depth_densify/BPNet/exts && python setup.py install

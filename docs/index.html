@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!-- TODO FINAL: replace [PAPER-URL] and teaser images before camera-ready -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DMEB: A Multi-View Varying-Exposure HDR Robot-Vision Benchmark</title>
+  <meta name="description" content="ECCV 2026 dataset & benchmark: multi-view, varying-exposure HDR for robot and consumer vision, with depth-guided reconstruction.">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-2 publication-title">
+        Depth-guided Multi-view Exposure Bracketing for HDR Robot Vision
+      </h1>
+
+      <div class="is-size-5 publication-authors">
+        <span class="author-block">Jinnyeong Kim,</span>
+        <span class="author-block">Juhyung Choi,</span>
+        <span class="author-block">Woohyeok Kim,</span>
+        <span class="author-block">Sunghyun Cho,</span>
+        <span class="author-block">Seung-Hwan Baek</span>
+      </div>
+      <div class="is-size-5 publication-authors">
+        <span class="author-block">POSTECH</span>
+      </div>
+      <div class="is-size-5 publication-venue"><b>ECCV 2026</b> &nbsp;·&nbsp; Datasets and Benchmarks</div>
+
+      <!-- Link buttons -->
+      <div class="publication-links">
+        <span class="link-block">
+          <a href="[PAPER-URL]" class="button is-dark is-rounded">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="#dataset" class="button is-dark is-rounded">
+            <span class="icon"><i class="fas fa-database"></i></span><span>Dataset</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://github.com/divisonofficer/eccv2026" class="button is-dark is-rounded">
+            <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="#bibtex" class="button is-dark is-rounded">
+            <span class="icon"><i class="fas fa-quote-left"></i></span><span>BibTeX</span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEASER ===================== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <img src="./static/images/figure_dmeb_method_overview.png"
+           alt="Single-shot multi-view exposure bracketing with depth-guided HDR reconstruction">
+      <h2 class="subtitle has-text-centered">
+        Single-shot, multi-view exposure bracketing with a depth sensor, fused by
+        a depth-guided reconstruction into a clean HDR image — captured across a
+        robot rig, an iPhone, and a CARLA generator.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABSTRACT ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <div class="content">
+          <p>
+            High dynamic range (HDR) reconstruction is fundamental to robust
+            vision under extreme lighting, yet existing datasets capture either a
+            single view or a single exposure regime, leaving multi-view,
+            varying-exposure settings unexplored. We present a
+            <b>multi-view, varying-exposure HDR benchmark</b> for robot and
+            consumer vision. It spans a calibrated robot acquisition rig (with
+            LiDAR, active-stereo, and iToF depth), an iPhone, and a CARLA-based
+            synthetic generator that reaches dynamic ranges hardware cannot
+            easily produce.
+          </p>
+          <p>
+            The benchmark enables evaluation regimes prior HDR datasets could not
+            support: synchronized multi-view varying exposures, depth-guided HDR
+            reconstruction, and controlled ablation over camera count and depth
+            modality. As a reference pipeline, we provide <b>DMEB</b>
+            (Depth-Merged Exposure Bracketing), which fuses depth-warped
+            multi-view observations into an HDR reconstruction in the
+            reference-camera field of view. All four data subsets, the benchmark
+            protocol, the reference code, and model weights are publicly released.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DATASET ===================== -->
+<section class="section" id="dataset">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">The Benchmark</h2>
+    <div class="content">
+      <p>Four subsets, all publicly released as a <b>processed benchmark
+      release</b> (synchronized, calibrated, undistorted). Raw ROS bags / raw
+      sensor streams are not included.</p>
+    </div>
+
+    <figure class="image" style="margin:1.5rem 0">
+      <img src="./static/images/figure_our_robot_vision_system.png"
+           alt="Robot vision acquisition system: cameras, depth sensors, coverage">
+      <figcaption class="has-text-centered is-size-7 has-text-grey" style="margin-top:0.5rem">
+        Robot acquisition system: synchronized RGB cameras (12-bit and 24-bit HDR
+        reference) with LiDAR, active-stereo, and iToF depth.
+      </figcaption>
+    </figure>
+
+    <table class="table is-fullwidth is-striped is-hoverable">
+      <thead>
+        <tr><th>Subset</th><th>Sensors / Inputs</th><th>HDR GT</th><th>Depth</th><th>Download</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Robot — Modest DR</b></td>
+          <td>3 cameras × 2 exposures (TIFF), HDR reference cam (EXR)</td>
+          <td>depth-registered EXR</td>
+          <td>LiDAR + active-stereo + iToF</td>
+          <td><a href="https://drive.google.com/drive/folders/1DJ6mOw3Y5VVNtvdoLCfY2SMBwGZkZk1z?usp=drive_link">Google Drive</a></td>
+        </tr>
+        <tr>
+          <td><b>Robot — Ultra DR</b></td>
+          <td>single-shot LDR (EXR)</td>
+          <td>burst-based EXR</td>
+          <td>LiDAR + active-stereo</td>
+          <td><a href="https://drive.google.com/drive/folders/16HsC-HKVJ110RjrT_gNQ9ewEp5HLL7SQ?usp=drive_link">Google Drive</a></td>
+        </tr>
+        <tr>
+          <td><b>Synthetic — CARLA</b></td>
+          <td>rendered multi-view LDR (EXR)</td>
+          <td>rendered EXR (extreme DR)</td>
+          <td>metric + sensor-like</td>
+          <td><a href="https://drive.google.com/drive/folders/14broXSegL1aa204akX_ft8NZkQH60Jq-?usp=drive_link">Google Drive</a></td>
+        </tr>
+        <tr>
+          <td><b>iPhone</b></td>
+          <td>wide / ultrawide / telephoto</td>
+          <td>bracket-generated</td>
+          <td>LiDAR</td>
+          <td><a href="https://drive.google.com/drive/folders/1vW8jDhCQcoK5klad48aCyhtoI0oyttze?usp=drive_link">Google Drive</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="content">
+      <p>The full dataset root is available on
+      <a href="https://drive.google.com/drive/folders/1t1Hy2oellaAWjeIeyXrrq6RlCGXcOPB-?usp=drive_link">Google Drive</a>.
+      Each subset ships with intrinsics/extrinsics, per-frame timestamps,
+      per-camera exposure/gain, valid masks, and scene metadata. See the
+      <a href="https://github.com/divisonofficer/eccv2026/blob/main/dataset/DATASET_CARD.md">dataset card</a>,
+      <a href="https://github.com/divisonofficer/eccv2026/blob/main/dataset/data_format.md">data format</a>, and
+      <a href="https://github.com/divisonofficer/eccv2026/blob/main/dataset/benchmark_protocol.md">benchmark protocol</a>.
+      A <code>MANIFEST.md5</code> with checksums accompanies every archive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REFERENCE PIPELINE ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Reference Pipeline: DMEB</h2>
+    <div class="content has-text-centered">
+      <p>DMEB (Depth-Merged Exposure Bracketing) is the benchmark's reference
+      method. It warps multi-view, varying-exposure observations with the depth
+      sensor, estimates per-view confidence, and fuses them into HDR radiance in
+      the reference-camera field of view.</p>
+    </div>
+    <figure class="image">
+      <img src="./static/images/figure_dmeb_exposure_control_and_hdr_reconstruction.png"
+           alt="DMEB pipeline: exposure control, depth and confidence, warping, fusion">
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== RESULTS ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Benchmark Results</h2>
+    <div class="content">
+      <p>PSNR (dB) on the robot held-out evaluation set. The benchmark separates the gain from
+      the <i>capture setting</i> (single-shot multi-camera) from the gain of the
+      <i>DMEB model</i>. Metrics are computed in the linear HDR domain over the
+      reference-camera field of view.</p>
+    </div>
+
+    <table class="table is-fullwidth is-narrow is-hoverable" style="max-width:680px;margin:auto">
+      <thead>
+        <tr><th>Method</th><th class="has-text-right">Multi-shot single-camera</th><th class="has-text-right">Single-shot multi-camera</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>HDR-Transformer</td><td class="has-text-right">31.26</td><td class="has-text-right">33.61</td></tr>
+        <tr><td>AFUNet</td><td class="has-text-right">29.64</td><td class="has-text-right">32.25</td></tr>
+        <tr><td><b>DMEB (reference)</b></td><td class="has-text-right">30.72</td><td class="has-text-right"><b>39.40</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="content" style="margin-top:1.5rem">
+      <p>Cross-platform generalization (PSNR, dB):</p>
+    </div>
+    <table class="table is-fullwidth is-narrow is-hoverable" style="max-width:560px;margin:auto">
+      <thead>
+        <tr><th>Method</th><th class="has-text-right">iPhone</th><th class="has-text-right">Choi et&nbsp;al. (zero-shot)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>HDR-Transformer</td><td class="has-text-right">23.35</td><td class="has-text-right">26.33</td></tr>
+        <tr><td>AFUNet</td><td class="has-text-right">25.21</td><td class="has-text-right">25.39</td></tr>
+        <tr><td><b>DMEB (reference)</b></td><td class="has-text-right"><b>26.12</b></td><td class="has-text-right"><b>33.00</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="content" style="margin-top:1.5rem">
+      <p>Depth-modality ablation enabled by the benchmark (DMEB, PSNR dB):
+      optical flow 35.84 → monocular 37.09 → mono + LiDAR (single-view) 37.90 →
+      mono + LiDAR (multi-view) <b>39.40</b>.</p>
+      <p class="is-size-7 has-text-grey">iPhone is reported as a consumer
+      proof-of-concept (evaluated on the common-overlap region with valid masks);
+      Choi et al. results are zero-shot. See the paper for full protocol.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CODE ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Code &amp; Reproduction</h2>
+    <div class="content">
+      <p>The reference pipeline (inference + evaluation + checkpoint) reproduces
+      the main table. Minimal example:</p>
+      <pre><code>cd code
+pip install -r requirements.txt
+
+python inference.py --data_root /path/to/robot_modest_dr \
+                    --ckpt /path/to/dmeb_ref.pth --output out/
+python eval.py --pred out/ --gt /path/to/robot_modest_dr</code></pre>
+      <p>Full instructions:
+      <a href="https://github.com/divisonofficer/eccv2026/blob/main/code/README.md">code/README.md</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BIBTEX ===================== -->
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@inproceedings{kim2026dmeb,
+  title     = {Depth-guided Multi-view Exposure Bracketing for HDR Robot Vision},
+  author    = {Kim, Jinnyeong and Choi, Juhyung and Kim, Woohyeok and Cho, Sunghyun and Baek, Seung-Hwan},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      Page template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+      (CC BY-SA 4.0). Dataset under CC BY-NC 4.0; code under MIT.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

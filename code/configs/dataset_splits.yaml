@@ -1,0 +1,75 @@
+# DMEB ECCV rebuttal — dataset splits
+# All experiments must use this single source of truth.
+
+real:
+  root: /mnt/d/data_jinnyeong/jinnyeong_cvpr2026
+  # Pseudo-GT (post/rgb_lucid_<view>.exr) survey results (2026-05-04):
+  #   - 10_28_*, 10_29_14_*, 11_11_*: post/ empty (raw, unprocessed)  -> excluded
+  #   - 10_29_15_* / 10_29_17_* / 10_29_18_* (17 sessions): post/ populated  -> usable
+  # User-confirmed test holdout: 10_29_18_34 (most recent session)
+  test_sessions:
+    - "10_29_18_34"
+  # Train+val = all other GT-bearing sessions
+  train_sessions:
+    - "10_29_15_01"
+    - "10_29_15_04"
+    - "10_29_15_05"
+    - "10_29_15_08"
+    - "10_29_15_10"
+    - "10_29_15_12"
+    - "10_29_15_16"
+    - "10_29_15_20"
+    - "10_29_15_29"
+    - "10_29_17_52"
+    - "10_29_17_55"
+    - "10_29_18_06"
+    - "10_29_18_10"
+    - "10_29_18_16"
+    - "10_29_18_17"
+    - "10_29_18_26"
+  # Sessions intentionally excluded (no pseudo-GT)
+  excluded_sessions:
+    - "10_28_20_05"
+    - "10_28_20_07"
+    - "10_29_14_56"
+    - "10_29_14_59"
+    - "11_11_18_03"
+    - "11_11_18_13"
+    - "11_11_18_25"
+    - "11_11_18_28"
+  # Per-timestamp device dirs that are expected to exist
+  required_devices:
+    - lucid_12_left
+    - lucid_12_left_sub
+    - lucid_12_right
+    - lucid_12_right_sub
+    - lucid_12_rear
+    - lucid_12_rear_sub
+  # Optional depth sensors (used by experiment7)
+  depth_sensors:
+    - helios_tof   # iToF
+    - ouster       # LiDAR
+    - realsense    # active stereo
+  # Reference HDR (pseudo-GT) location — to be filled by dry_run_paths.py
+  pseudo_gt_dir: null  # e.g. "post" once detected
+
+synthetic:
+  root: /mnt/d/calra2
+  # Primary scene types for evaluation (4-view scenes preferred)
+  primary_types:
+    - "example_hex_type1_extended_"
+    - "example_hex_type1_exr_"
+  # Secondary types (3-view, used for SV/MV completeness)
+  secondary_types:
+    - "example_hex_type0_"
+    - "example_hex_type2_"
+    - "example_hex_type3_"
+  views: [left, right, rear, mid]    # mid only present in type1/extended
+  exposures: [main, sub]             # hdr_<view> + hdr_<view>_sub
+
+# Reference view used for HDR reconstruction (single-view view)
+reference_view: left
+
+# Tone-map operator used ONLY for visualization metrics (LPIPS).
+# PSNR/SSIM computed in linear HDR domain.
+tone_map: reinhard
