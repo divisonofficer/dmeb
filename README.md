@@ -1,8 +1,8 @@
 <!-- TODO FINAL: replace all [URL] placeholders before camera-ready -->
 
-# DMEB: A Multi-View Varying-Exposure HDR Robot-Vision Benchmark
+# Depth-guided Multi-view Exposure Bracketing for HDR Robot Vision
 
-> **Project page:** https://divisonofficer.github.io/eccv2026/
+> **Project page:** https://divisonofficer.github.io/dmeb/
 > **Dataset & code:** this repository
 > **Paper:** ECCV 2026 (Submission #8851) — *Datasets and Benchmarks track*
 
@@ -12,7 +12,7 @@ reproduce the main results is **publicly available here** (no access request
 required).
 
 > The datasets, benchmark protocol, code, and documentation are publicly
-> available at https://divisonofficer.github.io/eccv2026/.
+> available at https://divisonofficer.github.io/dmeb/.
 
 ---
 
@@ -66,7 +66,7 @@ their data. See [`dataset/benchmark_protocol.md`](dataset/benchmark_protocol.md)
 
 ```
 eccv2026/
-├── docs/         # GitHub Pages source → divisonofficer.github.io/eccv2026
+├── docs/         # GitHub Pages source → divisonofficer.github.io/dmeb
 ├── dataset/      # dataset card, format, calibration, benchmark protocol
 └── code/         # inference + evaluation + reference checkpoint
 ```
@@ -98,7 +98,7 @@ per-subset terms in [`dataset/DATASET_CARD.md`](dataset/DATASET_CARD.md).
 
 ```bibtex
 @inproceedings{kim2026dmeb,
-  title     = {DMEB: A Multi-View Varying-Exposure HDR Robot-Vision Benchmark},
+  title     = {Depth-guided Multi-view Exposure Bracketing for HDR Robot Vision},
   author    = {Jinnyeong Kim, Juhyung Choi, Woohyeok Kim, Sunghyun Cho, Seung-Hwan Baek
   },
   booktitle = {European Conference on Computer Vision (ECCV)},

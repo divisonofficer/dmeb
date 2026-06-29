@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DMEB: A Multi-View Varying-Exposure HDR Robot-Vision Benchmark</title>
+  <title>Depth-guided Multi-view Exposure Bracketing for HDR Robot Vision</title>
   <meta name="description" content="ECCV 2026 dataset & benchmark: multi-view, varying-exposure HDR for robot and consumer vision, with depth-guided reconstruction.">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -46,7 +46,7 @@
           </a>
         </span>
         <span class="link-block">
-          <a href="https://github.com/divisonofficer/eccv2026" class="button is-dark is-rounded">
+          <a href="https://github.com/divisonofficer/dmeb" class="button is-dark is-rounded">
             <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
           </a>
         </span>
@@ -169,9 +169,9 @@
       <a href="https://drive.google.com/drive/folders/1t1Hy2oellaAWjeIeyXrrq6RlCGXcOPB-?usp=drive_link">Google Drive</a>.
       Each subset ships with intrinsics/extrinsics, per-frame timestamps,
       per-camera exposure/gain, valid masks, and scene metadata. See the
-      <a href="https://github.com/divisonofficer/eccv2026/blob/main/dataset/DATASET_CARD.md">dataset card</a>,
-      <a href="https://github.com/divisonofficer/eccv2026/blob/main/dataset/data_format.md">data format</a>, and
-      <a href="https://github.com/divisonofficer/eccv2026/blob/main/dataset/benchmark_protocol.md">benchmark protocol</a>.
+      <a href="https://github.com/divisonofficer/dmeb/blob/main/dataset/DATASET_CARD.md">dataset card</a>,
+      <a href="https://github.com/divisonofficer/dmeb/blob/main/dataset/data_format.md">data format</a>, and
+      <a href="https://github.com/divisonofficer/dmeb/blob/main/dataset/benchmark_protocol.md">benchmark protocol</a>.
       A <code>MANIFEST.md5</code> with checksums accompanies every archive.</p>
     </div>
   </div>
@@ -255,7 +255,7 @@ python inference.py --data_root /path/to/robot_modest_dr \
                     --ckpt /path/to/dmeb_ref.pth --output out/
 python eval.py --pred out/ --gt /path/to/robot_modest_dr</code></pre>
       <p>Full instructions:
-      <a href="https://github.com/divisonofficer/eccv2026/blob/main/code/README.md">code/README.md</a>.</p>
+      <a href="https://github.com/divisonofficer/dmeb/blob/main/code/README.md">code/README.md</a>.</p>
     </div>
   </div>
 </section>
